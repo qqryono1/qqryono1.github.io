@@ -69,6 +69,11 @@
     letter-spacing:.24em;line-height:1;
     margin:0;
   }
+  .plate .greet{
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-size:13px;letter-spacing:.26em;color:var(--ink-soft);
+    font-weight:300;margin:0;
+  }
   .plate .role{
     writing-mode:vertical-rl;text-orientation:upright;
     font-size:13px;letter-spacing:.32em;color:var(--ink-soft);
@@ -167,13 +172,18 @@
     .wrap{grid-template-columns:1fr;gap:34px;}
     .plate{
       position:static;flex-direction:row;align-items:center;
-      justify-content:flex-start;gap:16px;
+      justify-content:flex-start;gap:12px;flex-wrap:wrap;
       border-right:0;border-bottom:1px solid var(--rule);
       padding:0 0 20px;
     }
-    .plate .name,.plate .role{writing-mode:horizontal-tb;}
+    .plate .name,.plate .role,.plate .greet{writing-mode:horizontal-tb;}
     .plate .name{font-size:30px;letter-spacing:.14em;}
-    .plate .role{letter-spacing:.2em;}
+    .plate .greet{
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-size:13px;letter-spacing:.26em;color:var(--ink-soft);
+    font-weight:300;margin:0;
+  }
+  .plate .role{letter-spacing:.2em;}
     .seal{margin-left:auto;}
   }
 
@@ -199,6 +209,7 @@
 
   <!-- 名牌：姓名、職稱、印章四個字 -->
   <aside class="plate rise">
+    <p class="greet">您好，我叫</p>
     <p class="name">陳延昌</p>
     <p class="role">小小打工仔</p>
     <div class="seal" aria-hidden="true"><span>延</span><span>昌</span><span>之</span><span>印</span></div>
