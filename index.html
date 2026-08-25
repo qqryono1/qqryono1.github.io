@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>陳延昌｜小小打工仔</title>
+<meta name="description" content="陳延昌，高雄。把複雜的訊息整理成簡單的一句話，目前正踏入程式設計。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+TC:wght@300;400;600;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2EDE3;      /* 紙米 */
+    --paper-deep:#E7E0D2; /* 摺痕 */
+    --ink:#211F1B;        /* 墨 */
+    --ink-soft:#5C574E;   /* 淡墨 */
+    --pine:#2F4A3F;       /* 松綠，連結與線 */
+    --seal:#A33A2B;       /* 印泥朱，只用在印章 */
+    --rule:#C9C0AE;
+
+    --display:"Cormorant Garamond","Noto Serif TC",serif;
+    --body:"Noto Serif TC","Cormorant Garamond",serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-weight:400;
+    line-height:1.9;
+    letter-spacing:.02em;
+    position:relative;
+  }
+  /* 紙纖維質感 */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.14'/></svg>");
+  }
+
+  a{color:var(--pine);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .25s,color .25s;}
+  a:hover{border-bottom-color:var(--pine);}
+  a:focus-visible{outline:2px solid var(--pine);outline-offset:3px;border-radius:2px;}
+
+  .wrap{
+    position:relative;z-index:1;
+    max-width:1040px;margin:0 auto;
+    padding:clamp(32px,6vw,80px) clamp(20px,5vw,48px) 72px;
+    display:grid;
+    grid-template-columns:104px 1fr;
+    gap:clamp(28px,5vw,56px);
+  }
+
+  /* ── 直書名牌 ─────────────────── */
+  .plate{
+    position:sticky;top:clamp(32px,6vw,80px);
+    align-self:start;
+    border-right:1px solid var(--rule);
+    padding-right:22px;
+    display:flex;flex-direction:column;align-items:flex-end;gap:26px;
+  }
+  .plate .name{
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(30px,3.4vw,40px);
+    letter-spacing:.24em;line-height:1;
+    margin:0;
+  }
+  .plate .role{
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-size:13px;letter-spacing:.32em;color:var(--ink-soft);
+    font-weight:300;margin:0;
+  }
+  .seal{
+    width:46px;height:46px;flex:none;
+    border:1.5px solid var(--seal);border-radius:3px;
+    color:var(--seal);
+    display:grid;grid-template-columns:1fr 1fr;
+    place-items:center;
+    font-size:12px;font-weight:600;letter-spacing:0;line-height:1;
+    opacity:.85;
+  }
+
+  /* ── 內容 ─────────────────────── */
+  main{min-width:0;}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-soft);
+    display:flex;align-items:center;gap:10px;margin:0 0 22px;
+  }
+  .eyebrow::before{
+    content:"";width:7px;height:7px;border-radius:50%;
+    background:var(--pine);flex:none;
+  }
+
+  h1.lede{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(28px,4.6vw,46px);
+    line-height:1.5;letter-spacing:.01em;
+    margin:0 0 26px;max-width:19em;
+  }
+  .intro{max-width:34em;color:var(--ink-soft);margin:0;}
+  .intro strong{color:var(--ink);font-weight:600;}
+
+  section{margin-top:clamp(48px,7vw,76px);}
+  h2{
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ink-soft);margin:0 0 24px;
+    padding-bottom:10px;border-bottom:1px solid var(--rule);
+  }
+
+  .skills{list-style:none;margin:0;padding:0;display:grid;gap:22px;}
+  @media(min-width:720px){.skills{grid-template-columns:repeat(3,1fr);gap:30px;}}
+  .skills h3{
+    font-family:var(--display);font-size:20px;font-weight:600;
+    margin:0 0 6px;letter-spacing:.04em;
+  }
+  .skills p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.85;}
+
+  .works{list-style:none;margin:0;padding:0;}
+  .works li{
+    padding:22px 0;border-bottom:1px solid var(--rule);
+    display:grid;gap:4px;
+  }
+  .works li:first-child{padding-top:0;}
+  @media(min-width:720px){
+    .works li{grid-template-columns:76px 1fr;column-gap:26px;align-items:baseline;}
+  }
+  .year{font-family:var(--mono);font-size:12px;color:var(--ink-soft);letter-spacing:.08em;}
+  .works h3{font-family:var(--display);font-size:21px;font-weight:600;margin:0 0 4px;letter-spacing:.04em;}
+  .works p{margin:0;font-size:15px;color:var(--ink-soft);}
+  .works .go{
+    display:inline-block;margin-top:8px;font-family:var(--mono);
+    font-size:12px;letter-spacing:.1em;border-bottom:1px solid var(--rule);
+  }
+  .works .go::after{content:" →";}
+
+  .cv{list-style:none;margin:0;padding:0;display:grid;gap:14px;}
+  .cv li{display:grid;gap:2px;}
+  @media(min-width:720px){
+    .cv li{grid-template-columns:112px 1fr;column-gap:26px;align-items:baseline;}
+  }
+  .cv .span{font-family:var(--mono);font-size:12px;color:var(--ink-soft);letter-spacing:.06em;}
+  .cv b{font-weight:600;}
+  .cv em{font-style:normal;color:var(--ink-soft);}
+
+  .contact{display:flex;flex-wrap:wrap;gap:10px 30px;margin:0;padding:0;list-style:none;}
+  .contact li{font-size:15px;}
+  .contact .tag{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-soft);display:block;
+  }
+
+  footer{
+    margin-top:clamp(48px,7vw,76px);padding-top:20px;
+    border-top:1px solid var(--rule);
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    color:var(--ink-soft);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+
+  /* ── 手機 ─────────────────────── */
+  @media(max-width:719px){
+    .wrap{grid-template-columns:1fr;gap:34px;}
+    .plate{
+      position:static;flex-direction:row;align-items:center;
+      justify-content:flex-start;gap:16px;
+      border-right:0;border-bottom:1px solid var(--rule);
+      padding:0 0 20px;
+    }
+    .plate .name,.plate .role{writing-mode:horizontal-tb;}
+    .plate .name{font-size:30px;letter-spacing:.14em;}
+    .plate .role{letter-spacing:.2em;}
+    .seal{margin-left:auto;}
+  }
+
+  /* ── 入場 ─────────────────────── */
+  .rise{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards;animation-delay:var(--d,0s);}
+  @keyframes rise{to{opacity:1;transform:none;}}
+  @media(prefers-reduced-motion:reduce){
+    .rise{animation:none;opacity:1;transform:none;}
+    *{transition:none!important;}
+  }
+
+  /* ── 列印成 PDF ───────────────── */
+  @media print{
+    body::before{display:none;}
+    .wrap{max-width:none;padding:0;}
+    a{border:0;color:var(--ink);}
+    .works .go{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 名牌：姓名、職稱、印章四個字 -->
+  <aside class="plate rise">
+    <p class="name">陳延昌</p>
+    <p class="role">小小打工仔</p>
+    <div class="seal" aria-hidden="true"><span>延</span><span>昌</span><span>之</span><span>印</span></div>
+  </aside>
+
+  <main>
+
+    <!-- 開場：一句話說清楚你做什麼 -->
+    <p class="eyebrow rise" style="--d:.06s">高雄 · 學習中</p>
+    <h1 class="lede rise" style="--d:.12s">把複雜的訊息，<br>整理成一句話。</h1>
+    <p class="intro rise" style="--d:.18s">
+      我喜歡把繁雜的資訊拆開、重新排好，從<strong>字裡行間</strong>找出真正想說的那句話。
+      目前剛踏入<strong>程式設計</strong>這個領域，想把同一件事做得更快、也走得更遠——
+      讓整理過的訊息，能自己跑起來。
+    </p>
+
+    <!-- 專長：寫「你怎麼做」，不用工具清單 -->
+    <section>
+      <h2>我在做的事</h2>
+      <ul class="skills">
+        <li class="rise" style="--d:.24s">
+          <h3>訊息簡化</h3>
+          <p>從一長串資料、對話或文件裡，挑出真正該被看見的那一句。</p>
+        </li>
+        <li class="rise" style="--d:.28s">
+          <h3>文字整理</h3>
+          <p>把零散的筆記重新排成順序，讓別人第一次讀就跟得上。</p>
+        </li>
+        <li class="rise" style="--d:.32s">
+          <h3>程式設計</h3>
+          <p>剛開始學。目前練習用 HTML 與 CSS，把想法做成能打開的網頁。</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 練習作品：還沒有的話先留著三格，做一件補一件；整段不用也可以刪掉 -->
+    <section>
+      <h2>最近的練習</h2>
+      <ul class="works">
+        <li class="rise" style="--d:.36s">
+          <span class="year">2026</span>
+          <div>
+            <h3>stock-analysis　台股個股分析框架</h3>
+            <p>學習中。一套「現金流優先」的六步驟分析流程，把財報數字整理成看得懂的判斷依據。
+              我從 <a href="https://github.com/mjib007/stock-analysis">mjib007</a> 的專案 fork 出來讀、動手改，
+              順便練 Git 與 Markdown。</p>
+            <a class="go" href="https://github.com/qqryono1/stock-analysis">看 GitHub</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 經歷：三行以內就好；不想放可整段刪掉 -->
+    <section>
+      <h2>經歷</h2>
+      <ul class="cv">
+        <li class="rise" style="--d:.48s">
+          <span class="span">2026 — 至今</span>
+          <div><b>自學程式設計</b>　<em>HTML、CSS，往前端方向走</em></div>
+        </li>
+        <li class="rise" style="--d:.51s">
+          <span class="span">（起 — 迄）</span>
+          <div><b>自由業</b>　<em>（職務內容）</em></div>
+        </li>
+        <li class="rise" style="--d:.54s">
+          <span class="span">（起 — 迄）</span>
+          <div><b>虎尾技術學院</b>　<em>（科系）</em></div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 聯絡：留下真的會回覆的管道 -->
+    <section>
+      <h2>聯絡</h2>
+      <ul class="contact rise" style="--d:.58s">
+        <li><span class="tag">Email</span><a href="mailto:qqryono1@hotmail.com">qqryono1@hotmail.com</a></li>
+      </ul>
+    </section>
+
+    <footer class="rise" style="--d:.62s">
+      <span>© 2026 陳延昌</span>
+      <span>歡迎來信聊聊</span>
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>
